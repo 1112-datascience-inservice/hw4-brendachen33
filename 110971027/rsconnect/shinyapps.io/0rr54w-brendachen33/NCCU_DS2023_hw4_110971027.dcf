@@ -5,9 +5,9 @@ account: 0rr54w-brendachen33
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9047296
-bundleId: 7184655
+bundleId: 7184750
 url: https://0rr54w-brendachen33.shinyapps.io/NCCU_DS2023_hw4_110971027/
-when: 1683453348.98655
-lastSyncTime: 1683453348.98658
+when: 1683457205.24381
+lastSyncTime: 1683457205.24382
 asMultiple: FALSE
 asStatic: FALSE

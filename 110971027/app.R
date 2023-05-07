@@ -2,7 +2,7 @@ library(shiny)
 library(ggbiplot)
 library(FactoMineR)
 library(factoextra)
-library(knitr)
+#library(knitr)
 library(shinyjs)
 library(DT)
 
@@ -63,7 +63,7 @@ ui = fluidPage(
                                   label = "centers(k):",
                                   min = 3,
                                   max = 10,
-                                  value = 5)
+                                  value = 3)
                     ),
                     tags$div(
                       plotOutput(outputId = "ca_plot")
@@ -76,7 +76,7 @@ ui = fluidPage(
                                   label = "centers(k):",
                                   min = 3,
                                   max = 10,
-                                  value = 5)
+                                  value = 3)
                     ),
                     tags$div(
                       verbatimTextOutput("tb3")
