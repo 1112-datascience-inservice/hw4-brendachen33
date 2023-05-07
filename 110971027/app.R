@@ -198,8 +198,8 @@ server <- function(input, output) {
   output$ca_plot <- renderPlot({
     k <- input$ncp
     model <- kmeans(iris[, 1:4], centers = k)
-    cmodel3 <- CA(table(iris$Species, model$cluster))
-    fviz_ca_biplot(cmodel3, map ="colgreen", arrow = c(TRUE, FALSE),
+    cmodel3 <- CA(table(iris$Species, model$cluster), graph = FALSE)
+    fviz_ca_biplot(cmodel3, map ="colgreen", arrow = c(FALSE, TRUE),
                    repel = TRUE)
   }) 
 
