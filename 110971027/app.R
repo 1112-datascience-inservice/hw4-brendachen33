@@ -27,15 +27,15 @@ ui = fluidPage(
                         tags$div(
                           tags$h2("PCA"), 
                           tags$h4("x axis"), 
-                          actionButton("xaPC1", "PC1",class = "btn-info"),
-                          actionButton("xaPC2", "PC2",class = "btn-info"),
-                          actionButton("xaPC3", "PC3",class = "btn-info"),
-                          actionButton("xaPC4", "PC4", class = "btn-info"),
+                          actionButton("xaPC1", "PC1",class = "btn-info",style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
+                          actionButton("xaPC2", "PC2",class = "btn-info",style="color: #fff; background-color: #649170; border-color: #4e9c60"),
+                          actionButton("xaPC3", "PC3",class = "btn-info",style="color: #fff; background-color: #9e4c6a; border-color: #a04e4a"),
+                          actionButton("xaPC4", "PC4", class = "btn-info",style="color: #fff; background-color: #ffd700; border-color: #ffd700"),
                           tags$h4("y axis"), 
-                          actionButton("yaPC1", "PC1", class = "btn-info"),
-                          actionButton("yaPC2", "PC2", class = "btn-info"),
-                          actionButton("yaPC3", "PC3", class = "btn-info"),
-                          actionButton("yaPC4", "PC4", class = "btn-info")
+                          actionButton("yaPC1", "PC1", class = "btn-info",style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
+                          actionButton("yaPC2", "PC2", class = "btn-info",style="color: #fff; background-color: #649170; border-color: #4e9c60"),
+                          actionButton("yaPC3", "PC3", class = "btn-info",style="color: #fff; background-color: #9e4c6a; border-color: #a04e4a"),
+                          actionButton("yaPC4", "PC4", class = "btn-info",style="color: #fff; background-color: #ffd700; border-color: #ffd700")
                         ),
                         tags$div(
                           plotOutput(outputId = "distPlot")
