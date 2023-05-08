@@ -2,6 +2,7 @@ library(shiny)
 library(ggbiplot)
 library(FactoMineR)
 library(factoextra)
+library(ggcorrplot)
 #library(knitr)
 library(shinyjs)
 library(DT)
@@ -50,6 +51,16 @@ ui = fluidPage(
                         tags$div(
                           DTOutput('tb2')
                         )
+               ),
+               tabPanel("Scree Plot",
+                        tags$h2("Scree Plot"), 
+                        tags$div(plotOutput(outputId = "ScreePlot"))
+                        
+               ),
+               tabPanel("correlation matrix",
+                        tags$h2("Correlation Matrix"), 
+                        tags$div(plotOutput(outputId = "distPlotCorr"), 
+                                 style = "width: 80%; height: 100%")
                )
     )
   ),
@@ -69,8 +80,8 @@ ui = fluidPage(
                       plotOutput(outputId = "ca_plot")
                     )
            ),
-           tabPanel("extended results", 
-                    tags$h2("extended results"),
+           tabPanel("summary results", 
+                    tags$h2("summary results"),
                     tags$div(
                       sliderInput(inputId = "ncp2",
                                   label = "centers(k):",
@@ -181,7 +192,9 @@ server <- function(input, output) {
   #    re-executed when inputs (input$bins) change
   # 2. Its output type is a plot
   output$distPlot <- renderPlot({
-    g <- ggbiplot(ir.pca, obs.scale = 1, var.scale = 1, groups = ir.species, choices = c(v$x_axis,v$y_axis))
+    g <- ggbiplot(ir.pca, obs.scale = 1, var.scale = 1, 
+                  groups = ir.species, choices = c(v$x_axis,v$y_axis)
+                  , ellipse = TRUE, circle = TRUE)
     g <- g + scale_color_discrete(name = '')
     g <- g + theme(legend.direction = 'horizontal', legend.position = 'top')
     print(g)
@@ -195,6 +208,16 @@ server <- function(input, output) {
     log.ir, options = list(lengthChange = TRUE)
   )
  
+  output$distPlotCorr <- renderPlot({
+    corr_matrix <- cor(log.ir)
+    ggcorrplot(corr_matrix)
+  })
+  
+  output$ScreePlot <- renderPlot({
+    fviz_eig(ir.pca, addlabels = TRUE)
+  })
+  
+  
   output$ca_plot <- renderPlot({
     k <- input$ncp
     model <- kmeans(iris[, 1:4], centers = k)
